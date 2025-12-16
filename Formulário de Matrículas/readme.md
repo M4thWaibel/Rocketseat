@@ -29,7 +29,7 @@ Sugestões e melhorias são bem-vindas! Sinta-se à vontade para abrir issues ou
 ## 📧 Contato
 
 - **GitHub**: [@M4thWaibel](https://github.com/M4thWaibel)
-- **LinkedIn**: [seu-perfil](https://linkedin.com/in/seu-perfil)
+- **LinkedIn**: [Mathias-Waibel](https://linkedin.com/in/mathias-waibel)
 
 ## 📄 Licença
 
