@@ -1,7 +1,8 @@
 @import url(../global.css);
 
 .drop_zone{
-    border: 1px dashed var(--stroke-default);
+    border: 2px dashed transparent;
+    outline: 1px dashed var(--stroke-default);
     border-radius: 0.25rem;
     display: grid;
     justify-items: center;
@@ -23,7 +24,7 @@
     }
 
     &:hover, &:has(input:focus){
-        border-width: 2px;
+        outline-width: 0;
         border-color: #F3541C;
         background-color: var(--surface-secondary);
         
