@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Convite de Evento</title>
+    <style>
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-400: rgba(45, 166, 178, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-teal-800: rgba(41, 150, 161, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-400: rgba(230, 129, 97, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+
+            /* Semantic tokens */
+            --color-bg-primary: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-primary-active: var(--color-teal-700);
+            --color-border: rgba(94, 82, 64, 0.2);
+            --color-error: var(--color-red-500);
+            --color-success: var(--color-teal-500);
+
+            /* Spacing */
+            --space-4: 4px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+        }
+
+        [data-color-scheme="dark"] {
+            --color-bg-primary: var(--color-charcoal-700);
+            --color-surface: var(--color-charcoal-800);
+            --color-text: var(--color-gray-200);
+            --color-text-secondary: rgba(167, 169, 169, 0.7);
+            --color-primary: var(--color-teal-300);
+            --color-primary-hover: var(--color-teal-400);
+            --color-primary-active: var(--color-teal-800);
+            --color-border: rgba(119, 124, 124, 0.3);
+            --color-error: var(--color-red-400);
+            --color-success: var(--color-teal-300);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            padding: var(--space-16);
+            background-color: var(--color-bg-primary);
+            color: var(--color-text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-32);
+        }
+
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-32);
+            grid-column: 1 / -1;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            display: flex;
+            gap: var(--space-8);
+            align-items: center;
+        }
+
+        .toggle-btn {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            padding: var(--space-8) var(--space-16);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn:hover {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        .toggle-btn.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        .form-section {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            padding: var(--space-24);
+        }
+
+        .form-section h2 {
+            margin: 0 0 var(--space-16) 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-16);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--space-8);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: var(--space-10) var(--space-12);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background: var(--color-bg-primary);
+            color: var(--color-text);
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+        }
+
+        @media (max-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group.required label::after {
+            content: " *";
+            color: var(--color-error);
+        }
+
+        .error-message {
+            color: var(--color-error);
+            font-size: 12px;
+            margin-top: var(--space-4);
+            display: none;
+        }
+
+        .form-group.error input,
+        .form-group.error textarea,
+        .form-group.error select {
+            border-color: var(--color-error);
+            background: rgba(192, 21, 47, 0.05);
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: var(--space-12);
+            margin-top: var(--space-8);
+        }
+
+        .color-option {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .color-option:hover {
+            transform: scale(1.05);
+        }
+
+        .color-option.selected {
+            border-color: var(--color-text);
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-12);
+            margin-top: var(--space-8);
+        }
+
+        .theme-option {
+            aspect-ratio: 1;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 500;
+            background: var(--color-bg-primary);
+            transition: all 0.2s;
+        }
+
+        .theme-option:hover {
+            border-color: var(--color-primary);
+            background: rgba(33, 128, 141, 0.1);
+        }
+
+        .theme-option.selected {
+            border-color: var(--color-primary);
+            background: rgba(33, 128, 141, 0.15);
+            font-weight: 600;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-24);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .upload-area:hover {
+            border-color: var(--color-primary);
+            background: rgba(33, 128, 141, 0.05);
+        }
+
+        .upload-area.has-image {
+            border-style: solid;
+            padding: var(--space-12);
+        }
+
+        .upload-area img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: var(--radius-base);
+        }
+
+        .upload-area p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .btn-generate {
+            width: 100%;
+            padding: var(--space-12) var(--space-20);
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-base);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: var(--space-16);
+        }
+
+        .btn-generate:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .btn-generate:active {
+            background: var(--color-primary-active);
+        }
+
+        .preview-section {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            padding: var(--space-24);
+            height: fit-content;
+            position: sticky;
+            top: var(--space-16);
+        }
+
+        .preview-section h2 {
+            margin: 0 0 var(--space-16) 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .invitation-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .invitation-header {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: var(--space-16);
+        }
+
+        .invitation-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .invitation-body {
+            padding: var(--space-16);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .invitation-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-12);
+            margin-bottom: var(--space-16);
+            flex: 1;
+        }
+
+        .invitation-info-item {
+            font-size: 13px;
+        }
+
+        .invitation-info-item strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+        }
+
+        .invitation-footer {
+            padding-top: var(--space-12);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 12px;
+        }
+
+        .empty-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            color: var(--color-text-secondary);
+            text-align: center;
+        }
+
+        .success-message {
+            background: rgba(33, 128, 141, 0.1);
+            color: var(--color-success);
+            padding: var(--space-12) var(--space-16);
+            border-radius: var(--radius-base);
+            margin-top: var(--space-16);
+            display: none;
+            border: 1px solid rgba(33, 128, 141, 0.3);
+        }
+
+        .success-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Gerador de Convite</h1>
+            <div class="theme-toggle">
+                <span>Tema:</span>
+                <button class="toggle-btn active" data-theme="light">☀️ Claro</button>
+                <button class="toggle-btn" data-theme="dark">🌙 Escuro</button>
+            </div>
+        </div>
+
+        <form id="eventForm" class="form-section">
+            <h2>Informações do Evento</h2>
+
+            <div class="form-group required">
+                <label for="title">Título do Evento</label>
+                <input type="text" id="title" name="title" placeholder="Ex: Conferência de Tecnologia 2026">
+                <div class="error-message">Campo obrigatório</div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group required">
+                    <label for="startDate">Data de Início</label>
+                    <input type="datetime-local" id="startDate" name="startDate">
+                    <div class="error-message">Campo obrigatório</div>
+                </div>
+                <div class="form-group required">
+                    <label for="endDate">Data de Fim</label>
+                    <input type="datetime-local" id="endDate" name="endDate">
+                    <div class="error-message">Campo obrigatório</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group required">
+                    <label for="eventType">Tipo de Evento</label>
+                    <select id="eventType" name="eventType">
+                        <option value="">Selecione um tipo</option>
+                        <option value="presencial">Presencial</option>
+                        <option value="online">Online</option>
+                    </select>
+                    <div class="error-message">Campo obrigatório</div>
+                </div>
+                <div class="form-group required">
+                    <label for="location">Local</label>
+                    <input type="text" id="location" name="location" placeholder="Ex: São Paulo, SP">
+                    <div class="error-message">Campo obrigatório</div>
+                </div>
+            </div>
+
+            <div class="form-group required">
+                <label for="description">Descrição do Evento</label>
+                <textarea id="description" name="description" placeholder="Descreva os detalhes do seu evento..."></textarea>
+                <div class="error-message">Campo obrigatório</div>
+            </div>
+
+            <h2 style="margin-top: var(--space-32);">Contato</h2>
+
+            <div class="form-row">
+                <div class="form-group required">
+                    <label for="email">E-mail de Contato</label>
+                    <input type="email" id="email" name="email" placeholder="contato@exemplo.com">
+                    <div class="error-message">Email inválido</div>
+                </div>
+                <div class="form-group required">
+                    <label for="phone">Telefone de Contato</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999">
+                    <div class="error-message">Campo obrigatório</div>
+                </div>
+            </div>
+
+            <h2 style="margin-top: var(--space-32);">Personalização</h2>
+
+            <div class="form-group">
+                <label>Cor Principal</label>
+                <div class="color-palette">
+                    <div class="color-option selected" data-color="#2180d0" style="background: #2180d0;"></div>
+                    <div class="color-option" data-color="#d92a47" style="background: #d92a47;"></div>
+                    <div class="color-option" data-color="#f57d20" style="background: #f57d20;"></div>
+                    <div class="color-option" data-color="#2ea44f" style="background: #2ea44f;"></div>
+                    <div class="color-option" data-color="#a371f7" style="background: #a371f7;"></div>
+                    <div class="color-option" data-color="#1f6feb" style="background: #1f6feb;"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Tema do Convite</label>
+                <div class="theme-grid">
+                    <div class="theme-option selected" data-theme="moderno">Moderno</div>
+                    <div class="theme-option" data-theme="minimalista">Minimalista</div>
+                    <div class="theme-option" data-theme="elegante">Elegante</div>
+                    <div class="theme-option" data-theme="corporativo">Corporativo</div>
+                    <div class="theme-option" data-theme="playful">Playful</div>
+                    <div class="theme-option" data-theme="vibrante">Vibrante</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="coverImage">Imagem de Capa</label>
+                <div class="upload-area" id="uploadArea">
+                    <p>📷 Clique ou arraste uma imagem aqui</p>
+                </div>
+                <input type="file" id="coverImage" name="coverImage" accept="image/*" style="display: none;">
+            </div>
+
+            <div class="success-message" id="successMessage">
+                ✓ Convite gerado com sucesso!
+            </div>
+
+            <button type="submit" class="btn-generate">Gerar Convite</button>
+        </form>
+
+        <div class="preview-section">
+            <h2>Prévia do Convite</h2>
+            <div id="preview" class="empty-preview">
+                Preencha os campos e gere seu convite
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('eventForm');
+        const preview = document.getElementById('preview');
+        const uploadArea = document.getElementById('uploadArea');
+        const coverImageInput = document.getElementById('coverImage');
+        const successMessage = document.getElementById('successMessage');
+
+        let formData = {
+            title: '',
+            startDate: '',
+            endDate: '',
+            eventType: '',
+            location: '',
+            description: '',
+            email: '',
+            phone: '',
+            primaryColor: '#2180d0',
+            theme: 'moderno',
+            coverImage: null
+        };
+
+        // Theme toggle
+        document.querySelectorAll('[data-theme]').forEach(btn => {
+            if (btn.classList.contains('toggle-btn')) {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('[data-theme].toggle-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    const theme = e.target.dataset.theme;
+                    document.documentElement.setAttribute('data-color-scheme', theme);
+                });
+            }
+        });
+
+        // Color selection
+        document.querySelectorAll('.color-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+                formData.primaryColor = option.dataset.color;
+                updatePreview();
+            });
+        });
+
+        // Theme selection
+        document.querySelectorAll('.theme-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.theme-option').forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+                formData.theme = option.dataset.theme;
+                updatePreview();
+            });
+        });
+
+        // Upload area
+        uploadArea.addEventListener('click', () => coverImageInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--color-primary)';
+            uploadArea.style.background = 'rgba(33, 128, 141, 0.05)';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = 'var(--color-border)';
+            uploadArea.style.background = 'transparent';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--color-border)';
+            uploadArea.style.background = 'transparent';
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleImageUpload(files[0]);
+            }
+        });
+
+        coverImageInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleImageUpload(e.target.files[0]);
+            }
+        });
+
+        function handleImageUpload(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                formData.coverImage = e.target.result;
+                uploadArea.classList.add('has-image');
+                uploadArea.innerHTML = `<img src="${e.target.result}" alt="Capa">`;
+                updatePreview();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Form input listeners
+        document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="datetime-local"], textarea, select').forEach(field => {
+            if (field.id !== 'coverImage') {
+                field.addEventListener('input', (e) => {
+                    formData[e.target.id] = e.target.value;
+                    updatePreview();
+                    clearError(e.target);
+                });
+                field.addEventListener('change', (e) => {
+                    formData[e.target.id] = e.target.value;
+                    updatePreview();
+                    clearError(e.target);
+                });
+            }
+        });
+
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function updatePreview() {
+            const { title, startDate, endDate, eventType, location, description, email, phone, primaryColor, theme, coverImage } = formData;
+
+            if (!title) {
+                preview.innerHTML = '<div class="empty-preview">Preencha os campos e gere seu convite</div>';
+                return;
+            }
+
+            let headerStyle = `background: linear-gradient(135deg, ${primaryColor} 0%, ${adjustBrightness(primaryColor, -20)} 100%);`;
+            if (coverImage) {
+                headerStyle = `background-image: url('${coverImage}'); background-color: ${primaryColor};`;
+            }
+
+            const invitationHTML = `
+                <div class="invitation-card" style="background: var(--color-bg-primary);">
+                    <div class="invitation-header" style="${headerStyle}">
+                        <h3>${escapeHtml(title)}</h3>
+                    </div>
+                    <div class="invitation-body">
+                        <div class="invitation-info">
+                            ${startDate ? `
+                                <div class="invitation-info-item">
+                                    <strong>📅 Data:</strong>
+                                    ${formatDate(startDate)} ${endDate ? `até ${formatDate(endDate)}` : ''}
+                                </div>
+                            ` : ''}
+                            ${eventType ? `
+                                <div class="invitation-info-item">
+                                    <strong>📍 Tipo:</strong>
+                                    ${eventType === 'presencial' ? 'Presencial' : 'Online'}
+                                </div>
+                            ` : ''}
+                            ${location ? `
+                                <div class="invitation-info-item">
+                                    <strong>🏢 Local:</strong>
+                                    ${escapeHtml(location)}
+                                </div>
+                            ` : ''}
+                            ${description ? `
+                                <div class="invitation-info-item">
+                                    <strong>📝 Descrição:</strong>
+                                    ${escapeHtml(description)}
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="invitation-footer" style="color: var(--color-text-secondary);">
+                            ${email ? `📧 ${escapeHtml(email)}<br>` : ''}
+                            ${phone ? `📞 ${escapeHtml(phone)}` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            preview.innerHTML = invitationHTML;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function adjustBrightness(color, percent) {
+            const num = parseInt(color.replace("#", ""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = Math.max(0, Math.min(255, (num >> 16) + amt));
+            const G = Math.max(0, Math.min(255, (num >> 8 & 0x00FF) + amt));
+            const B = Math.max(0, Math.min(255, (num & 0x0000FF) + amt));
+            return "#" + (0x1000000 + (R < 16 ? 0 : 0) * 0x10000 + (R << 16) + (G < 16 ? 0 : 0) * 0x100 + (G << 8) + B).toString(16).slice(1);
+        }
+
+        function clearError(field) {
+            field.closest('.form-group').classList.remove('error');
+        }
+
+        function showError(field) {
+            field.closest('.form-group').classList.add('error');
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function validateForm() {
+            const requiredFields = [
+                { field: 'title', validator: (v) => v.trim() !== '' },
+                { field: 'startDate', validator: (v) => v !== '' },
+                { field: 'endDate', validator: (v) => v !== '' },
+                { field: 'eventType', validator: (v) => v !== '' },
+                { field: 'location', validator: (v) => v.trim() !== '' },
+                { field: 'description', validator: (v) => v.trim() !== '' },
+                { field: 'email', validator: (v) => validateEmail(v) },
+                { field: 'phone', validator: (v) => v.trim() !== '' }
+            ];
+
+            let isValid = true;
+
+            requiredFields.forEach(({ field, validator }) => {
+                const fieldElement = document.getElementById(field);
+                if (!validator(fieldElement.value)) {
+                    showError(fieldElement);
+                    isValid = false;
+                } else {
+                    clearError(fieldElement);
+                }
+            });
+
+            return isValid;
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            if (validateForm()) {
+                successMessage.classList.add('show');
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 3000);
+            }
+        });
+
+        // Initialize theme
+        document.documentElement.setAttribute('data-color-scheme', 'light');
+    </script>
+</body>
+</html>
