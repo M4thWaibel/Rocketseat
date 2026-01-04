@@ -1,0 +1,278 @@
+:root{
+    --p_red: #E3646E;
+    --p_purple: #BB72E9;
+    --p_blue: #3996DB;
+    --p_green: #82BC4F;
+    --p_yellow: #EABD5F;
+
+    --b_gray-100: #E2E4E9;
+    --b_gray-200: #C0C4CE;
+    --b_gray-300: #878EA1;
+    --b_gray-400: #292C34;
+    --b_gray-500: #16181D;
+    --b_gray-600: #0D0E11;
+
+    --font-family: "Asap", sans-serif;
+    --font-family-sub: "Inconsolata", monospace;
+    --font-family-text: "Maven Pro", sans-serif;
+
+    --title-lg: bold 56px/120% var(--font-family);
+    --title-mb: bold 24px/120% var(--font-family);
+    --title-sm: bold 16px/120% var(--font-family);
+
+    --subtitle: normal 20px/120% var(--font-family-sub);
+
+    --text-mb: normal 16px/140% var(--font-family-text);
+    --text-sm: normal 14px/140% var(--font-family-text);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    color: var(--b_gray-100);
+}
+
+span{
+    color: var(--p_red);
+}
+
+.sub{
+    font: var(--subtitle);
+}
+
+.lg{
+    font: var(--title-lg);
+}
+
+.title_mb{
+    font: var(--title-mb)
+}
+
+.title_sm{
+    font: var(--title-sm);
+}
+
+.text_mb{
+    font: var(--text-mb);
+}
+
+.text_sm{
+    font: var(--text-sm);
+}
+
+.introduction{
+    background-image: url(../assets/Background_Intro.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.presentation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    width: 1040px;
+    height: 450px;
+}
+
+.img_perfil{
+    border-radius: 50%;
+    border: solid var(--p_red);
+    width: 112px;
+    height: 112px;
+    justify-content: center;
+    margin-top: 120px;
+    margin-bottom: 56px;
+}
+
+.presentation .sub{
+    margin-bottom: 8px;
+}
+
+.presentation .lg{
+    margin-bottom: 20px;
+}
+
+.presentation .title_sm{
+    margin-bottom: 80px;
+}
+
+.stacks{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stack_card{
+    display: flex;
+    text-align: center;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 94px;
+    border-radius: 16px;
+    background-color: var(--b_gray-400);
+    height: 40px;
+    width: auto;
+    font: var(--text-mb);
+}
+
+.stack_card p{
+    margin: 9px 16px 9px 8px;
+    /*margin-left: 8px;
+    margin-right: 16px;
+    margin-top: 9px;
+    margin-bottom: 9px;*/
+}
+
+.stack_card img{
+    margin-left: 16px;
+}
+
+.down{
+    margin-bottom: 57px;
+}
+
+.projects{
+    background-color: var(--b_gray-500);
+    padding-top: 72px;
+    height: 917px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 56px;
+}
+
+.intro p{
+    color: var(--p_red);
+}
+
+.show_projects{
+    height: 584px;
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+}
+
+.card_project{
+    background-color: var(--b_gray-400);
+    height: 280px;
+    width: 330px;
+    border-radius: 12px;
+}
+
+.card_project img{
+    border-radius: 16px;
+    height: 156px;
+    width: 306px;
+    margin: 12px 12px 20px 12px;
+}
+
+.card_project h1{
+    margin-top: 12px;
+    margin-left: 16px;
+}
+
+.card_project p{
+    margin-top: 8px;
+    margin-bottom: 21px;
+    margin-left: 16px;
+}
+
+.services{
+    background-color: var(--b_gray-600);
+}
+
+.services .intro{
+    padding-top: 88px;
+}
+
+.show_services{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+}
+
+.card_services{
+    border-radius: 12px;
+    border: solid var(--b_gray-500) 2px;
+    height: 155px;
+    width: 280px;
+    margin-bottom: 120px;
+}
+
+.card_services img{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.card_services h1, p{
+    margin-left: 20px;
+}
+
+.contact{
+    background-image: url(../assets/Background_Contacts.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact_intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    width: 1040px;
+    height: 450px;
+}
+
+.social{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    background-color: var(--b_gray-400);
+    width: 400px;
+    height: 70px;
+}
+
+.social h1{
+    margin-top: 23px;
+    text-align: left;
+}
+
+.logo{
+    margin-left: 20px;
+}
+
+.link{
+    margin-right: 24px;
+}
