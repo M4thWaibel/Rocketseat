@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encantos Literários - Clube de Assinatura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:wght@400;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Encantos Literários">
+                    <rect width="40" height="40" rx="4" fill="#2C3E50"/>
+                    <path d="M12 28V12H20C23.3137 12 26 14.6863 26 18C26 20.6275 24.5 22.8627 22.375 23.875C24.625 24.8987 26 27.125 26 29.75V30H24V29.75C24 27.9137 22.625 26.375 20.875 26.375H14V28H12Z" fill="#D4AF37"/>
+                </svg>
+                <span class="logo-text">Encantos Literários</span>
+            </div>
+            <button class="btn-subscribe" onclick="document.getElementById('plans').scrollIntoView({ behavior: 'smooth' })" aria-label="Assinar agora">Assinar agora</button>
+        </nav>
+
+        <div class="hero-content">
+            <h1 class="hero-title">Descobra Mundos em Cada Página</h1>
+            <p class="hero-subtitle">Um clube de assinatura dedicado aos amantes de literatura. Receba um livro cuidadosamente selecionado a cada mês, acompanhado de surpresas literárias exclusivas.</p>
+            <button class="btn-hero" onclick="document.getElementById('plans').scrollIntoView({ behavior: 'smooth' })" aria-label="Comece sua jornada literária">Comece agora</button>
+        </div>
+
+        <div class="hero-illustration">
+            <svg width="300" height="400" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="book-svg">
+                <!-- Livro aberto -->
+                <g class="book">
+                    <!-- Capa esquerda -->
+                    <path d="M50 80L120 60V320L50 340Z" fill="#8B4513" stroke="#5D2E0F" stroke-width="2"/>
+                    <!-- Capa direita -->
+                    <path d="M120 60L190 80V340L120 320Z" fill="#A0522D" stroke="#5D2E0F" stroke-width="2"/>
+                    <!-- Páginas -->
+                    <line x1="120" y1="60" x2="120" y2="340" stroke="#2C3E50" stroke-width="3"/>
+                    <line x1="85" y1="70" x2="85" y2="330" stroke="#D4AF37" stroke-width="1" opacity="0.5"/>
+                    <line x1="155" y1="70" x2="155" y2="330" stroke="#D4AF37" stroke-width="1" opacity="0.5"/>
+                </g>
+                
+                <!-- Elementos decorativos -->
+                <circle cx="250" cy="100" r="15" fill="#D4AF37" opacity="0.3"/>
+                <circle cx="30" cy="200" r="10" fill="#D4AF37" opacity="0.2"/>
+                <path d="M260 150Q270 160 260 170" stroke="#D4AF37" stroke-width="2" fill="none" opacity="0.4"/>
+            </svg>
+        </div>
+
+        <div class="hero-decorative">
+            <div class="floating-element element-1">✨</div>
+            <div class="floating-element element-2">📖</div>
+            <div class="floating-element element-3">✨</div>
+        </div>
+    </header>
+
+    <!-- KIT DO MÊS SECTION -->
+    <section class="kit-section" id="kit">
+        <div class="container">
+            <h2 class="section-title">Kit do Mês</h2>
+            <p class="section-subtitle">Veja tudo que você recebe em cada assinatura</p>
+
+            <div class="kit-content">
+                <div class="kit-showcase">
+                    <div class="book-showcase">
+                        <div class="book-card">
+                            <div class="book-spine"></div>
+                            <div class="book-cover">
+                                <div class="book-title">O Chamado</div>
+                                <div class="book-author">Clarice Lispector</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="kit-book-month">Janeiro de 2026</p>
+                </div>
+
+                <div class="kit-items">
+                    <div class="kit-item" style="animation-delay: 0.2s;">
+                        <div class="kit-connector"></div>
+                        <div class="kit-text">
+                            <h3>Livro Selecionado</h3>
+                            <p>Edição especial com impressão premium e capa dura</p>
+                        </div>
+                    </div>
+
+                    <div class="kit-item" style="animation-delay: 0.4s;">
+                        <div class="kit-connector"></div>
+                        <div class="kit-text">
+                            <h3>Marcador Personalizado</h3>
+                            <p>Feito artesanalmente com design exclusivo do mês</p>
+                        </div>
+                    </div>
+
+                    <div class="kit-item" style="animation-delay: 0.6s;">
+                        <div class="kit-connector"></div>
+                        <div class="kit-text">
+                            <h3>Carta do Autor</h3>
+                            <p>Mensagem pessoal e reflexões sobre a obra</p>
+                        </div>
+                    </div>
+
+                    <div class="kit-item" style="animation-delay: 0.8s;">
+                        <div class="kit-connector"></div>
+                        <div class="kit-text">
+                            <h3>Brinde Surpresa</h3>
+                            <p>Presente especial relacionado ao tema do livro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANOS SECTION -->
+    <section class="plans-section" id="plans">
+        <div class="container">
+            <h2 class="section-title">Escolha seu Plano</h2>
+            <p class="section-subtitle">Assinatura flexível para todos os leitores</p>
+
+            <div class="plans-grid">
+                <!-- Plano Mensal -->
+                <div class="plan-card">
+                    <div class="plan-badge">Mais Flexível</div>
+                    <h3 class="plan-name">Mensal</h3>
+                    <div class="plan-price">
+                        <span class="price-amount">R$ 39</span>
+                        <span class="price-period">/mês</span>
+                    </div>
+                    <p class="plan-annual">R$ 468/ano</p>
+                    
+                    <ul class="plan-benefits">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#2C3E50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>1 livro por mês</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#2C3E50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Kit completo com brindes</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#2C3E50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Acesso ao clube exclusivo</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#2C3E50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Cancelar quando quiser</span>
+                        </li>
+                    </ul>
+
+                    <button class="plan-btn">Assinar</button>
+                </div>
+
+                <!-- Plano Semestral -->
+                <div class="plan-card plan-featured">
+                    <div class="plan-badge badge-popular">Mais Popular</div>
+                    <h3 class="plan-name">Semestral</h3>
+                    <div class="plan-price">
+                        <span class="price-amount">R$ 33</span>
+                        <span class="price-period">/mês</span>
+                    </div>
+                    <p class="plan-annual">R$ 198 a cada 6 meses</p>
+                    
+                    <ul class="plan-benefits">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>6 livros por período</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Kit completo com brindes</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Acesso prioritário às edições</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Desconto em produtos extras</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Convite para eventos exclusivos</span>
+                        </li>
+                    </ul>
+
+                    <button class="plan-btn btn-featured">Assinar Agora</button>
+                </div>
+
+                <!-- Plano Anual -->
+                <div class="plan-card">
+                    <div class="plan-badge">Melhor Valor</div>
+                    <h3 class="plan-name">Anual</h3>
+                    <div class="plan-price">
+                        <span class="price-amount">R$ 29</span>
+                        <span class="price-period">/mês</span>
+                    </div>
+                    <p class="plan-annual">R$ 348/ano</p>
+                    
+                    <ul class="plan-benefits">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#2C3E50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>12 livros por ano</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#2C3E50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Kit deluxe com acabamento premium</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#2C3E50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Acesso VIP ao clube</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#2C3E50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Desconto em todos os produtos</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 5L8 14L3 9" stroke="#2C3E50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Prioridade máxima em suporte</span>
+                        </li>
+                    </ul>
+
+                    <button class="plan-btn">Assinar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="4" fill="#D4AF37" opacity="0.15"/>
+                        <path d="M12 28V12H20C23.3137 12 26 14.6863 26 18C26 20.6275 24.5 22.8627 22.375 23.875C24.625 24.8987 26 27.125 26 29.75V30H24V29.75C24 27.9137 22.625 26.375 20.875 26.375H14V28H12Z" fill="#D4AF37"/>
+                    </svg>
+                    <span>Encantos Literários</span>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram" class="social-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.646-.069 4.849-.069zm0-2.163c-3.257 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm4.846-10.405c0 .795.645 1.44 1.44 1.44s1.44-.645 1.44-1.44-.645-1.44-1.44-1.44-1.44.645-1.44 1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="TikTok" class="social-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.1 1.75 2.9 2.9 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.26 6.26 0 0 0-5.03 6.51A6.27 6.27 0 0 0 12 22.16a6.27 6.27 0 0 0 6-6.52l-.01-1.03c1.1.86 2.41 1.35 3.91 1.42V9.64a4.85 4.85 0 0 1-.88-.07z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="X (Twitter)" class="social-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7a10.6 10.6 0 01-9-5.5z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="YouTube" class="social-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="footer-nav">
+                <a href="#" class="footer-link">Kits Passados</a>
+                <a href="#" class="footer-link">Clube de Membros</a>
+                <a href="#" class="footer-link">Blog</a>
+                <a href="#" class="footer-link">Central de Ajuda</a>
+                <a href="#" class="footer-link">Regulamentos</a>
+                <a href="#" class="footer-link">Suporte</a>
+            </nav>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Encantos Literários. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add scroll animation to elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.kit-item, .plan-card, .section-title').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
