@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quicklist - Lista de Compras</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/style/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <button class="btn-back" id="btnBack" aria-label="Voltar para página anterior">← Voltar</button>
+      <div class="header-content">
+        <h1 class="title">Quicklist</h1>
+        <p class="subtitle">Lista de compras da semana</p>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="input-section">
+        <div class="input-group">
+          <input
+            type="text"
+            id="itemInput"
+            class="input-field"
+            placeholder="Adicione um item à lista..."
+            aria-label="Campo para adicionar novo item"
+          >
+          <button class="btn-add" id="btnAdd" aria-label="Adicionar item à lista">Adicionar item</button>
+        </div>
+      </section>
+
+      <section class="list-section">
+        <ul class="items-list" id="itemsList"></ul>
+      </section>
+    </main>
+
+    <div class="alert-container" id="alertContainer" role="alert" aria-live="polite"></div>
+  </div>
+
+  <script src="src/script/script.js"></script>
+</body>
+</html>
